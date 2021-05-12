@@ -1,0 +1,11 @@
+#!/bin/bash
+## Add the public key if exists
+mkdir ~/.ssh
+if test -n "${sshPubKey-}"; then
+  echo "Public key is found"
+  echo ${sshPubKey}>> ~/.ssh/authorized_keys
+else
+  echo "Public key is not found"
+fi
+service ssh start
+echo "ssh server started"

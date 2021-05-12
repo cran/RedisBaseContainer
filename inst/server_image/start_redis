@@ -1,0 +1,25 @@
+#!/bin/bash
+## create the redis workspace
+mkdir /workspace/redis
+## create log file
+touch /workspace/redis-server.log
+## create config file
+cp /workspace/redis.conf.template /workspace/redis.conf
+## add password if exists
+if test -n "${serverPassword-}"; then
+  echo "redis password is found"
+  echo "requirepass ${serverPassword}">> /workspace/redis.conf
+else
+  echo "redis password is not found"
+fi
+## add port number if exists
+if test -n "${serverPort-}"; then
+  echo "redis port is configured"
+  echo "port ${serverPort}">> /workspace/redis.conf
+else
+  echo "port 6379">> /workspace/redis.conf
+  echo "redis port is not configured"
+fi
+## start the server
+redis-server /workspace/redis.conf
+echo "redis server started"

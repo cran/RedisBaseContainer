@@ -1,0 +1,8 @@
+#!/bin/bash
+## Run ssh server
+bash ./start_sshd
+## Run redis server
+bash ./start_redis
+
+tail -f /dev/null
+
