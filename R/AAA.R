@@ -9,9 +9,8 @@
 .RedisContainer <- setRefClass(
     "RedisContainer",
     fields = list(
-        sysPackages = "CharOrNULL",
-        RPackages = "CharOrNULL",
-        backend = "CharOrNULL"
+        sysPackages = "character",
+        RPackages = "character"
     ),
     contains = "DockerContainer"
 )

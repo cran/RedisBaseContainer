@@ -20,7 +20,7 @@ setMethod("configServerContainerEnv", "RedisContainer",
               serverPassword <- .getServerPassword(cluster)
               sshPubKey <- getSSHPubKeyValue()
 
-              stopifnot(!is.null(serverPort))
+              stopifnot(length(serverPort)!=0)
               if(is.null(serverPassword)){
                   stop("The server must be password protected!")
               }
